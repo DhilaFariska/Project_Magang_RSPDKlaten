@@ -1,0 +1,271 @@
+/* Settings Page Styles */
+.settings-management {
+    width: auto;
+    padding: 20px;
+}
+
+.settings-management h2 {
+    font-weight: 700;
+    color: #e2e8f0;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.settings-management p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Card Styles */
+.card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+}
+
+.card-title i {
+    color: #facc15;
+}
+
+/* Profile Image Styles */
+.profile-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid #334155;
+}
+
+.profile-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(30, 41, 59, 0.8);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.profile-overlay:hover {
+    background-color: #334155;
+}
+
+.profile-overlay label {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+/* Admin List Styles */
+.admin-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.admin-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-list::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 3px;
+}
+
+.admin-list::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 3px;
+}
+
+.admin-list::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+.admin-item {
+    background-color: #334155;
+    transition: background-color 0.2s ease;
+}
+
+.admin-item:hover {
+    background-color: #334155 !important;
+}
+
+.content-item {
+    flex-grow: 1;
+}
+
+.action-item-admin {
+    color: #fff;
+}
+
+.list-unstyled li {
+    padding: 4px 0;
+    color: #cbd5e1;
+}
+
+.list-unstyled i {
+    width: 20px;
+    text-align: center;
+}
+
+.bg-primary, .bg-success {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Styles */
+.modal-content {
+    border: 1px solid #334155;
+}
+
+.modal-header {
+    border-bottom: 1px solid #334155;
+}
+
+.modal-footer {
+    border-top: 1px solid #334155;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #1e293b !important;
+    border-color: #facc15 !important;
+    box-shadow: 0 0 0 0.25rem rgba(250, 204, 21, 0.25) !important;
+    color: #e2e8f0 !important;
+}
+
+.input-group-text {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Password Input Groups */
+.input-group .btn-outline-secondary {
+    border-color: #334155;
+    color: #94a3b8;
+}
+
+.input-group .btn-outline-secondary:hover {
+    background-color: #334155;
+    border-color: #475569;
+}
+
+/* Buttons */
+.btn-yellow {
+    background-color: #f59e0b;
+    color: #1e293b;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-yellow:hover {
+    background-color: #f59e0b;
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-outline-light {
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+.btn-outline-light:hover {
+    background-color: #334155;
+    border-color: #475569;
+}
+
+.btn-outline-danger {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc2626;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+
+.btn-danger:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-management {
+        padding: 15px;
+    }
+    
+    .profile-image-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    .col-md-6 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .settings-management h2 {
+        font-size: 1.3rem;
+    }
+    
+    .profile-image-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .profile-overlay {
+        width: 30px;
+        height: 30px;
+    }
+}

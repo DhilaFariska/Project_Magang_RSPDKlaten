@@ -1,0 +1,130 @@
+body {
+    background-color: #0A1220;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-card {
+    background-color: #121A29;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-card .card-body {
+    padding: 2rem;
+}
+
+.shield-icon {
+    background-color: #FFD700;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #0A1220;
+    font-size: 28px;
+}
+
+.shield-icon i {
+    font-size: 32px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: white;
+}
+
+.form-control {
+    background-color: #1E2736;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    background-color: #1E2736;
+    border-color: #FFD700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    color: white;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+}
+
+.password-toggle:hover {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #FFD700;
+    border: none;
+    color: #0A1220;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #FFC107;
+    transform: translateY(-1px);
+}
+
+.text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 12px;
+}
+
+a.text-white {
+    color: white !important;
+    font-size: 14px;
+}
+
+a.text-white:hover {
+    color: #FFD700 !important;
+    text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+    .auth-card {
+        margin: 0 15px;
+    }
+    
+    .shield-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    .btn-primary {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
