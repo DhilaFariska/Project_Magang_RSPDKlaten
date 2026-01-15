@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Siaran extends Model
+class siaran extends Model
 {
     protected $fillable = [
         'nama_program',
