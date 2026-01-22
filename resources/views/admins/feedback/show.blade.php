@@ -38,10 +38,9 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <a href="{{ route('feedback.index') }}" class="btn btn-secondary btn-sm mb-2">
+            <a href="{{ route('feedback.index') }}" class="btn btn-secondary btn-sm">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
-            <h2 class="mb-0">Detail Feedback</h2>
         </div>
         <form action="{{ route('feedback.destroy', $feedback->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus feedback ini?')">
             @csrf

@@ -66,18 +66,6 @@
     }
 </style>
 <div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Feedback dari Audiens</h2>
-        <div class="d-flex gap-2">
-            <select class="form-select" id="filterStatus" style="width: auto;">
-                <option value="">Semua Status</option>
-                <option value="baru">Baru</option>
-                <option value="dibaca">Dibaca</option>
-                <option value="ditanggapi">Ditanggapi</option>
-            </select>
-        </div>
-    </div>
-
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -129,15 +117,15 @@
                                 <small style="color: #ccc !important;">{{ $feedback->created_at->format('d/m/Y H:i') }}</small>
                             </td>
                             <td style="color: #fff !important;">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('feedback.show', $feedback->id) }}" class="btn btn-primary" title="Lihat Detail">
-                                        <i class="fas fa-eye"></i>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ route('feedback.show', $feedback->id) }}" class="btn btn-sm btn-info" title="Lihat Detail">
+                                        <i class="fas fa-eye me-1"></i> Lihat
                                     </a>
                                     <form action="{{ route('feedback.destroy', $feedback->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Yakin ingin menghapus feedback ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" title="Hapus">
-                                            <i class="fas fa-trash"></i>
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
+                                            <i class="fas fa-trash me-1"></i> Hapus
                                         </button>
                                     </form>
                                 </div>
