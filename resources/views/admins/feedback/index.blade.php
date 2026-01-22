@@ -121,10 +121,8 @@
                             <td style="color: #fff !important;">
                                 @if($feedback->status === 'baru')
                                 <span class="badge bg-warning text-dark">Baru</span>
-                                @elseif($feedback->status === 'dibaca')
-                                <span class="badge bg-primary">Dibaca</span>
                                 @else
-                                <span class="badge bg-success">Ditanggapi</span>
+                                <span class="badge bg-primary">Dibaca</span>
                                 @endif
                             </td>
                             <td style="color: #fff !important;">

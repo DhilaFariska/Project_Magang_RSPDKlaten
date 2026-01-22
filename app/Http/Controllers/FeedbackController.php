@@ -48,22 +48,6 @@ class FeedbackController extends Controller
         return view('admins.feedback.show', compact('feedback'));
     }
 
-    // Method untuk admin memberi tanggapan
-    public function respond(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'tanggapan' => 'required|string',
-        ]);
-
-        $feedback = Feedback::findOrFail($id);
-        $feedback->update([
-            'tanggapan' => $validated['tanggapan'],
-            'status' => 'ditanggapi'
-        ]);
-
-        return redirect()->back()->with('success', 'Tanggapan berhasil disimpan!');
-    }
-
     // Method untuk admin hapus feedback
     public function destroy($id)
     {

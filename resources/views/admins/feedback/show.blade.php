@@ -71,10 +71,8 @@
                         <span class="ms-2">
                             @if($feedback->status === 'baru')
                             <span class="badge bg-warning text-dark">Baru</span>
-                            @elseif($feedback->status === 'dibaca')
-                            <span class="badge bg-primary">Dibaca</span>
                             @else
-                            <span class="badge bg-success">Ditanggapi</span>
+                            <span class="badge bg-primary">Dibaca</span>
                             @endif
                         </span>
                     </div>
@@ -86,45 +84,6 @@
                     <div class="text-muted">
                         <small><i class="fas fa-clock"></i> Diterima: {{ $feedback->created_at->format('d F Y, H:i') }}</small>
                     </div>
-                </div>
-            </div>
-
-            @if($feedback->tanggapan)
-            <div class="card mb-4 border-success">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0"><i class="fas fa-reply"></i> Tanggapan Anda</h5>
-                </div>
-                <div class="card-body">
-                    <p style="white-space: pre-line;">{{ $feedback->tanggapan }}</p>
-                    <div class="text-muted">
-                        <small><i class="fas fa-clock"></i> Ditanggapi: {{ $feedback->updated_at->format('d F Y, H:i') }}</small>
-                    </div>
-                </div>
-            </div>
-            @endif
-
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0"><i class="fas fa-pen"></i> Tanggapi Feedback</h5>
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('feedback.respond', $feedback->id) }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="tanggapan" class="form-label">Tanggapan Anda</label>
-                            <textarea class="form-control @error('tanggapan') is-invalid @enderror" 
-                                      id="tanggapan" 
-                                      name="tanggapan" 
-                                      rows="6" 
-                                      placeholder="Tulis tanggapan Anda di sini...">{{ old('tanggapan', $feedback->tanggapan) }}</textarea>
-                            @error('tanggapan')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Kirim Tanggapan
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -171,17 +130,10 @@
                             <strong>Diterima</strong><br>
                             <small class="text-muted ms-3">{{ $feedback->created_at->format('d/m/Y H:i') }}</small>
                         </li>
-                        @if($feedback->status === 'dibaca' || $feedback->status === 'ditanggapi')
+                        @if($feedback->status === 'dibaca')
                         <li class="mb-2">
                             <i class="fas fa-eye text-primary"></i> 
                             <strong>Dibaca</strong><br>
-                            <small class="text-muted ms-3">{{ $feedback->updated_at->format('d/m/Y H:i') }}</small>
-                        </li>
-                        @endif
-                        @if($feedback->status === 'ditanggapi')
-                        <li class="mb-2">
-                            <i class="fas fa-reply text-success"></i> 
-                            <strong>Ditanggapi</strong><br>
                             <small class="text-muted ms-3">{{ $feedback->updated_at->format('d/m/Y H:i') }}</small>
                         </li>
                         @endif
