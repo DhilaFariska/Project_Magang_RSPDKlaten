@@ -7,9 +7,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManajemenBeritaController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ManajemenSiaranController;
+use App\Http\Controllers\FeedbackController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/berita/all', [LandingPageController::class, 'getAllBerita'])->name('berita.all');
+
+// Public Feedback Route
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -45,6 +49,12 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/admin/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.update-password');
     Route::post('/admin/settings', [SettingsController::class, 'store'])->name('settings.store');
     Route::delete('/admin/settings/{id}', [SettingsController::class, 'destroy'])->name('settings.destroy');
+    
+    // Feedback Routes (Admin)
+    Route::get('/admin/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+    Route::get('/admin/feedback/{id}', [FeedbackController::class, 'show'])->name('feedback.show');
+    Route::post('/admin/feedback/{id}/respond', [FeedbackController::class, 'respond'])->name('feedback.respond');
+    Route::delete('/admin/feedback/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
 });
 
 Route::fallback(function () {

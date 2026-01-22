@@ -30,6 +30,20 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{ route('feedback.index') }}"
+                    class="nav-link {{ request()->routeIs('feedback.*') ? 'active' : '' }}">
+                    <i class="fas fa-comments"></i>
+                    <span>Feedback Audiens</span>
+                    @php
+                        $newFeedbackCount = \App\Models\Feedback::where('status', 'baru')->count();
+                    @endphp
+                    @if($newFeedbackCount > 0)
+                        <span class="badge bg-danger ms-2">{{ $newFeedbackCount }}</span>
+                    @endif
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ route('settings.index') }}"
                     class="nav-link {{ request()->routeIs('settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog"></i>

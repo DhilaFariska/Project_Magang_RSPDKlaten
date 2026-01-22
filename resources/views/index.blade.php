@@ -20,7 +20,7 @@
             --border: #2a323f;
             --hover-bg: #1a222f;
         }
-
+        
         body {
             background-color: var(--primary-bg);
             color: var(--text-light);
@@ -197,6 +197,17 @@
             overflow: hidden;
             border: 1px solid var(--border);
             height: 100%;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-controls .control-btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 1.1rem;
         }
 
         .player-header {
@@ -1446,6 +1457,29 @@
             background-color: var(--gray);
             color: var(--text-light);
         }
+
+        .alert-success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        #submitFormBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 
@@ -1541,18 +1575,15 @@
                                 id="volumeSlider">
                         </div>
                         <div class="player-controls">
-                            <div class="control-btn" id="hearButton">
-                                <i class="fas fa-headphones"></i>
-                                <span>Hear</span>
-                            </div>
-                            <div class="control-btn" id="chatButton">
-                                <i class="fas fa-comment"></i>
-                                <span>Chat</span>
-                            </div>
-                            <div class="control-btn" id="livechatButton">
-                                <i class="fas fa-wifi"></i>
-                                <span>Livechat</span>
-                            </div>
+                            <a 
+                                href="https://wa.me/6288902949093"
+                                target="_blank"
+                                class="control-btn w-100"
+                                id="livechatButton"
+                            >
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Live Chat WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1824,21 +1855,30 @@
                                         placeholder="nama@email.com">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="kategori" class="form-label"><strong>Kategori</strong></label>
+                                    <label for="kategori" class="form-label"><strong>Tema Talkshow</strong></label>
                                     <select class="form-select" id="kategori">
-                                        <option value="" selected>Pilih kategori</option>
-                                        <option value="Pengaduan">Pengaduan</option>
-                                        <option value="Saran">Saran</option>
-                                        <option value="Permintaan Informasi">Permintaan Informasi</option>
-                                        <option value="Kerjasama">Kerjasama</option>
-                                        <option value="Lainnya">Lainnya</option>
+                                        <option value="" selected>Pilih Tema Talkshow</option>
+                                        <option value="Pendidikan / Edukasi">Pendidikan / Edukasi</option>
+                                        <option value="UMKM & Perdagangan">UMKM & Perdagangan</option>
+                                        <option value="Pengembangan Inovasi & Kreativitas">Pengembangan Inovasi & Kreativitas</option>
+                                        <option value="Teknologi / Digital (Informatika)">Teknologi / Digital (Informatika)</option>
+                                        <option value="Olahraga & Kepemudaan">Olahraga & Kepemudaan</option>
+                                        <option value="Pariwisata & Ekonomi Kreatif">Pariwisata & Ekonomi Kreatif</option>
+                                        <option value="Seni dan Kebudayaan">Seni dan Kebudayaan</option>
+                                        <option value="Pertanian & Perikanan">Pertanian & Perikanan</option>
+                                        <option value="Ketenagakerjaan">Ketenagakerjaan</option>
+                                        <option value="Investasi & Keuangan">Investasi & Keuangan</option>
+                                        <option value="Kesehatan">Kesehatan</option>
+                                        <option value="Keagamaan">Keagamaan</option>
+                                        <option value="Sosial, Politik, dan Hukum">Sosial, Politik, dan Hukum</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end mt-4">
-                                <button type="button" id="sendWhatsAppBtn"
-                                    class="btn btn-warning d-flex align-items-center px-4 py-2 fw-bold">
-                                    <i class="fab fa-whatsapp me-2"></i> Kirim via WhatsApp
+                            <div class="d-grid mt-4">
+                                <button type="submit" id="submitFormBtn"
+                                    class="btn btn-warning text-white d-flex align-items-center justify-content-center px-4 py-2 fw-bold"
+                                    style="background-color: #ffc107; border: none;">
+                                    <i class="fas fa-paper-plane me-2"></i> Kirim Pesan
                                 </button>
                             </div>
                         </form>
@@ -2016,43 +2056,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const feedbackForm = document.getElementById('feedbackForm');
-            const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
+            const submitFormBtn = document.getElementById('submitFormBtn');
             const formMessage = document.getElementById('formMessage');
 
-            const whatsappNumber = "+6288902949093";
-
-            function validatePhoneNumber(phone) {
-                const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
-                return phoneRegex.test(phone);
-            }
-
-            function formatWhatsAppMessage(formData) {
-                const now = new Date();
-                const dateTime = now.toLocaleString('id-ID', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                return `📢 *MASUKAN DARI WARGA RSPD KLATEN* 📢
-
-👤 *Nama*: ${formData.nama}
-📞 *Nomor Telepon*: ${formData.telepon}
-📧 *Email*: ${formData.email || 'Tidak diisi'}
-📋 *Kategori*: ${formData.kategori || 'Tidak dipilih'}
-📝 *Subjek*: ${formData.subjek}
-
-💬 *Pesan*:
-${formData.pesan}
-
-⏰ *Dikirim pada*: ${dateTime}
-📍 *Via*: Website RSPD Klaten`;
-            }
-
-            sendWhatsAppBtn.addEventListener('click', function(e) {
+            // Handle submit form ke database (tombol Kirim Pesan)
+            feedbackForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
                 // Validasi form
@@ -2069,36 +2077,41 @@ ${formData.pesan}
                     return;
                 }
 
-                let formattedPhone = nomorTelepon;
-                if (formattedPhone.startsWith('0')) {
-                    formattedPhone = '62' + formattedPhone.substring(1);
-                } else if (!formattedPhone.startsWith('+62') && !formattedPhone.startsWith('62')) {
-                    formattedPhone = '62' + formattedPhone;
-                }
+                // Disable button saat submit
+                submitFormBtn.disabled = true;
+                submitFormBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Mengirim...';
 
-                formattedPhone = formattedPhone.replace(/\D/g, '');
+                try {
+                    const response = await fetch('{{ route('feedback.store') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            nama_lengkap: namaLengkap,
+                            nomor_telepon: nomorTelepon,
+                            email: email,
+                            subjek: subjek,
+                            pesan: pesan,
+                            kategori: kategori
+                        })
+                    });
 
-                const formData = {
-                    nama: namaLengkap,
-                    telepon: nomorTelepon,
-                    email: email,
-                    kategori: kategori,
-                    subjek: subjek,
-                    pesan: pesan
-                };
+                    const data = await response.json();
 
-                const whatsappMessage = formatWhatsAppMessage(formData);
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                const whatsappUrl =
-                    `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-                if (confirm(
-                        'Anda akan diarahkan ke WhatsApp untuk mengirim pesan. Pastikan WhatsApp sudah terinstall di perangkat Anda.'
-                    )) {
-                    window.open(whatsappUrl, '_blank');
-                    showMessage(
-                        'Formulir berhasil disiapkan! Silakan kirim pesan melalui WhatsApp yang terbuka.',
-                        'success');
-                    saveFormData(formData);
+                    if (response.ok && data.success) {
+                        showMessage(data.message, 'success');
+                        feedbackForm.reset();
+                    } else {
+                        showMessage(data.message || 'Terjadi kesalahan saat mengirim pesan.', 'error');
+                    }
+                } catch (error) {
+                    showMessage('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                    console.error('Error:', error);
+                } finally {
+                    submitFormBtn.disabled = false;
+                    submitFormBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Kirim Pesan';
                 }
             });
 
@@ -2109,22 +2122,6 @@ ${formData.pesan}
                 setTimeout(() => {
                     formMessage.style.display = 'none';
                 }, 5000);
-            }
-
-            function saveFormData(data) {
-                try {
-                    const history = JSON.parse(localStorage.getItem('feedbackHistory') || '[]');
-                    data.timestamp = new Date().toISOString();
-                    history.unshift(data);
-
-                    if (history.length > 10) {
-                        history.pop();
-                    }
-
-                    localStorage.setItem('feedbackHistory', JSON.stringify(history));
-                } catch (error) {
-                    console.error('Gagal menyimpan data:', error);
-                }
             }
 
             const nomorTeleponInput = document.getElementById('nomorTelepon');
@@ -2379,21 +2376,7 @@ ${formData.pesan}
                 });
             });
 
-            const hearButton = document.getElementById('hearButton');
-            const chatButton = document.getElementById('chatButton');
             const livechatButton = document.getElementById('livechatButton');
-
-            hearButton.addEventListener('click', function() {
-                togglePlayback();
-            });
-
-            chatButton.addEventListener('click', function() {
-                alert('Fitur chat akan segera hadir!');
-            });
-
-            livechatButton.addEventListener('click', function() {
-                alert('Live chat tersedia pada jam siaran interaktif.');
-            });
 
             updateStatus(false, "Radio Offline - Klik tombol play untuk memulai streaming");
         });
